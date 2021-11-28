@@ -1,7 +1,9 @@
-# This is a repository to hosts contracts related to security studies based on some content listed below. The main goal is to organize content and contracts generated during my journey to exploiting smart contracts vulnerabilities in soliditiy language.
+# Exploiting Solidity Security Vulnerabilities.
+
+This is a repository to hosts contracts related to security studies based on some content listed below. The main goal is to organize content and contracts generated during my journey to exploiting smart contracts vulnerabilities in soliditiy language.
 
 
-## Links which I used to base my studies.
+### Links which I used to base my studies.
 
 1 - https://solidity-by-example.org/hacks/
 
