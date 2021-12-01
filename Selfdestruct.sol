@@ -2,13 +2,13 @@
 pragma solidity 0.8.3;
 
 contract EtherGame {
-    uint public targetAmount = 7 ether;
+    uint256 public targetAmount = 7 ether;
     address public winner;
 
     function deposit() public payable {
         require(msg.value == 1 ether, "You can only send 1 Ether");
 
-        uint balance = address(this).balance;
+        uint256 balance = address(this).balance;
         require(balance <= targetAmount, "Game is over");
 
         if (balance == targetAmount) {

